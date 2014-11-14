@@ -8,15 +8,16 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
- def create
+  def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "Welcome to Puppies in the Park!"
+      log_in @user
+      flash[:success] = "Welcome Puppies in the Park!"
       redirect_to @user
     else
       render 'new'
     end
- end
+  end
 
   private
 
